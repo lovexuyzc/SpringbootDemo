@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/emp}" METHOD="post">
+
+    <input type="hidden" name="_method" th:value="PUT">
+    <input  id="email" name="email" th:value="${wwt}"/>
+    <input  id="age" name="age" th:value="${wwts}"/>
+
+    <button type="submit">提交</button>
+</form>
+<br>
+<form th:action="@{/emp/}+${3}" METHOD="post" id="delform">
+
+    <input type="hidden" name="_method" th:value="delete">
+    <input   name="email" th:value="${wwt}"/>
+    <input  name="age" th:value="${wwts}"/>
+</form>
+<button type="submit" id="del" th:attr="budel=@{/emp/}+${5}">删除</button>
+<script th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.1.3/js/bootstrap.min.js}"></script>
+<script>
+        $("#del").click(function () {
+
+            $("#delform").attr("action",$(this).attr("budel")).submit();
+        })
+</script>
+</body>
+</html>
